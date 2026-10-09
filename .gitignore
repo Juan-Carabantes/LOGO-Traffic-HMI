@@ -10,11 +10,13 @@ __pycache__/
 htmlcov/
 
 # --- Datos generados al usar la app ---
-data/
+data/*
 logs/
 recordings/
 *.sqlite3
 *.db
+# Excepción: historial de vehículos contados (30 ago – 28 sep 2026) como datos de ejemplo
+!data/traffic_history.sqlite3
 *.log
 *.mp4
 *.avi
