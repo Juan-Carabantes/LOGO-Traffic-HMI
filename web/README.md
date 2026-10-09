@@ -36,7 +36,8 @@ Todos los textos están en `index.html`. Cada sección empieza con un comentario
 
 ## Publicar en GitHub Pages
 
-1. En GitHub: **New repository** → nombre `logo-traffic-hmi-web` → **Public** → **Create repository**.
-2. **uploading an existing file** → arrastrar el contenido de esta carpeta `web` (no la carpeta) → **Commit changes**.
-3. **Settings → Pages → Source: Deploy from a branch → Branch: main / (root) → Save**.
-4. En 1 o 2 minutos queda en: `https://juan-carabantes.github.io/logo-traffic-hmi-web/`
+La página se publica sola con GitHub Actions (`.github/workflows/pages.yml`) cada vez que se sube un cambio en `web/` a la rama `main`.
+
+Configuración (solo la primera vez): en el repositorio, **Settings → Pages → Source: GitHub Actions**.
+
+Queda en: `https://juan-carabantes.github.io/LOGO-Traffic-HMI/`
