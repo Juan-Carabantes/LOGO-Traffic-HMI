@@ -23,7 +23,7 @@ web/
 | `demostracion.mp4` | Video demostrativo (sección Maqueta) |
 | `equipo.jpg` | Foto del equipo (sección Equipo) |
 
-Las capturas `app_semaforo.png`, `app_camara.jpg`, `app_estadisticas.png`, `app_recomendaciones.png` y `app_configuracion.png` ya están incluidas, igual que `programa_logo.png` (diagrama del Tablero Principal).
+Las capturas `app_semaforo.png`, `app_camara.jpg`, `app_estadisticas.png`, `app_recomendaciones.png` y `app_configuracion.png` ya están incluidas, igual que `programa_logo.png` (diagrama del Tablero Principal) y `logo_itcha.svg` (logo del instituto, en Equipo y Créditos).
 
 El diagrama de bloques (`dibujarBloques`) y el de comunicación ya están dibujados en la página (`js/app.js`, funciones `dibujarBloques` y `dibujarRed`).
 

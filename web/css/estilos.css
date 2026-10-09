@@ -400,6 +400,19 @@ img { max-width: 100%; display: block; }
 .equipo-foto img, .equipo-foto .hueco { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; box-shadow: var(--sombra); }
 .equipo-foto figcaption { text-align: center; color: var(--texto-suave); margin-top: 12px; font-size: .95rem; }
 
+/* --- Estudios: logo del instituto y descripción de la carrera --- */
+.estudios { display: flex; align-items: center; gap: 28px; max-width: 960px; margin: 0 auto 40px; }
+.estudios > img { flex: none; height: auto; }
+.estudios h3 { margin: 4px 0 8px; font-size: 1.35rem; }
+.estudios p { color: var(--texto-suave); margin: 0 0 14px; }
+.creditos .institucion { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.creditos .institucion img { margin: 0; }
+@media (max-width: 760px) {
+  .estudios { flex-direction: column; text-align: center; }
+  .estudios .chips { justify-content: center; }
+  .estudios > img { width: 90px; }
+}
+
 /* --- Diagrama de bloques: textos internos de cada bloque --- */
 #svgBloques .categoria { fill: var(--acento); font: 700 11px var(--fuente); letter-spacing: .08em; }
 #svgBloques .item { fill: var(--texto); font: 400 14px var(--fuente); }
