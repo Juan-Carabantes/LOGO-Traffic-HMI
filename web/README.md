@@ -22,6 +22,8 @@ web/
 | `maqueta_1.jpg` … `maqueta_6.jpg` | Fotos de la maqueta |
 | `demostracion.mp4` | Video demostrativo (sección Maqueta) |
 | `integrante_1.jpg` … `integrante_4.jpg` | Foto de cada integrante (sección Equipo); cuadrada, se recorta en círculo |
+| `equipo_grupo.jpg` | Foto grupal destacada de la galería; horizontal 16:9 |
+| `equipo_4.jpg` … `equipo_10.jpg` | Galería (sección Equipo): verticales 3:4; `equipo_8` y `equipo_9` horizontales 4:3 (ocupan 2 columnas) |
 
 Las capturas `app_semaforo.png`, `app_camara.jpg`, `app_estadisticas.png`, `app_recomendaciones.png` y `app_configuracion.png` ya están incluidas, igual que `programa_logo.png` (diagrama del Tablero Principal) y `logo_itcha.svg` (logo del instituto, en Equipo y Créditos).
 

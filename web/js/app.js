@@ -178,7 +178,8 @@ document.addEventListener("click", (ev) => {
   if (!img) return;
   visorImagen.src = img.src;
   visorImagen.alt = img.alt;
-  document.getElementById("visorTexto").textContent = img.alt;
+  // Las fotos con data-sin-texto se amplían sin descripción debajo
+  document.getElementById("visorTexto").textContent = img.hasAttribute("data-sin-texto") ? "" : img.alt;
   visor.hidden = false;
 });
 

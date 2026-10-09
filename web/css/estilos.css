@@ -434,6 +434,22 @@ img { max-width: 100%; display: block; }
 .llamado p { font-size: 1.1rem; margin: 0 0 20px; }
 @media (max-width: 980px) { .carrera-datos { grid-template-columns: repeat(2, 1fr); } }
 .subtitulo-equipo { text-align: center; font-size: 1.35rem; margin: 0 0 20px; }
+.subtitulo-galeria { margin-top: 64px; }
+.galeria-equipo { grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 0 auto; }
+.galeria-equipo img, .galeria-equipo .hueco { aspect-ratio: 3 / 4; }
+.galeria-equipo .destacada { grid-column: 1 / -1; }
+.galeria-equipo .destacada img, .galeria-equipo .destacada .hueco { aspect-ratio: 16 / 9; }
+/* La foto ancha toma el alto de la fila (el de las fotos verticales de al lado) */
+.galeria-equipo .ancha { grid-column: span 2; }
+.galeria-equipo .ancha img, .galeria-equipo .ancha .hueco { aspect-ratio: auto; height: 0; min-height: 100%; }
+@media (max-width: 760px) {
+  .galeria-equipo { grid-template-columns: repeat(2, 1fr); gap: 12px; grid-auto-flow: dense; }
+  /* Con 2 columnas y un número impar de fotos verticales, la última queda sola: se centra.
+     Si se agrega una vertical más (número par), borrar esta regla. */
+  .galeria-equipo figure:last-child:not(.ancha):not(.destacada) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
+  .galeria-equipo .ancha img, .galeria-equipo .ancha .hueco { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
+}
+@media (max-width: 760px) { .subtitulo-galeria { margin-top: 48px; } }
 @media (max-width: 760px) {
   .estudios { flex-direction: column; text-align: center; padding: 24px 20px; margin-bottom: 56px; }
   .estudios .chips { justify-content: center; }
