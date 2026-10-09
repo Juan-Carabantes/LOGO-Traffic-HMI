@@ -47,3 +47,8 @@ dist/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# --- Ejecutable: los archivos para crear el .exe no se suben ---
+build.bat
+*.spec
+packaging/

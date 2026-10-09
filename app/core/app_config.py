@@ -1,7 +1,4 @@
 import logging
-import os
-import shutil
-import sys
 import threading
 from pathlib import Path
 
@@ -9,54 +6,12 @@ from .conf_file import ConfFile
 
 # --- Rutas ---
 
-# En desarrollo todo vive en la carpeta del proyecto. En el .exe (PyInstaller) los recursos
-# de solo lectura (código, iconos, estilos, valores de fabrica y modelos) van dentro del
-# ejecutable y los datos del usuario (configuración, historial, registros y grabaciones)
-# en Documentos\LOGO Traffic HMI, para que se conserven entre versiones.
-FROZEN = bool(getattr(sys, "frozen", False))
-
-
-def _documents_dir():
-    """Devuelve la carpeta Documentos del usuario (respeta la redirección a OneDrive en Windows)."""
-    if os.name == "nt":
-        try:
-            import ctypes
-            from ctypes import wintypes
-            buffer = ctypes.create_unicode_buffer(wintypes.MAX_PATH)
-            if ctypes.windll.shell32.SHGetFolderPathW(None, 5, None, 0, buffer) == 0:   # 5 = Documentos
-                return Path(buffer.value)
-        except Exception:
-            pass
-    return Path.home() / "Documents"
-
-
-if FROZEN:
-    RESOURCE_DIR = Path(getattr(sys, "_MEIPASS", Path(sys.executable).parent))
-    PROJECT_DIR = _documents_dir() / "LOGO Traffic HMI"
-    CONFIG_DIR = PROJECT_DIR / "config"
-else:
-    RESOURCE_DIR = Path(__file__).resolve().parents[2]
-    PROJECT_DIR = RESOURCE_DIR
-    CONFIG_DIR = RESOURCE_DIR / "app" / "config"
-
-APP_DIR = RESOURCE_DIR / "app"
-DEFAULTS_DIR = APP_DIR / "config" / "defaults"
-BUNDLED_MODELS_DIR = RESOURCE_DIR / "models"   # modelos incluidos en el .exe (solo lectura)
+# Todo vive en la carpeta del proyecto: código, configuración, datos, registros y grabaciones.
+PROJECT_DIR = Path(__file__).resolve().parents[2]
+APP_DIR = PROJECT_DIR / "app"
+CONFIG_DIR = APP_DIR / "config"
+DEFAULTS_DIR = CONFIG_DIR / "defaults"
 MASTER_FILE = CONFIG_DIR / "app.conf"
-
-
-def _prepare_user_config():
-    """En el .exe copia la configuración inicial a Documentos sin reemplazar la que ya exista."""
-    if not FROZEN:
-        return
-    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-    for source in (APP_DIR / "config").glob("*.conf"):
-        target = CONFIG_DIR / source.name
-        if not target.exists():
-            shutil.copy2(source, target)
-
-
-_prepare_user_config()
 
 _log = logging.getLogger(__name__)
 
@@ -199,14 +154,14 @@ class AppConfig:
         return conf.sections() if conf else []
 
     def path(self, module, key, default=None):
-        """Lee una ruta; si es relativa, las que empiezan con app/ son recursos y el resto datos del usuario."""
+        """Lee una ruta; si es relativa, se toma desde la carpeta del proyecto."""
         value = self.get_text(module, key, default or "")
         if not value:
             return None
         path = Path(value)
         if path.is_absolute():
             return path
-        return (RESOURCE_DIR if path.parts and path.parts[0] == "app" else PROJECT_DIR) / path
+        return PROJECT_DIR / path
 
     def _resolve_special(self, module, key, value):
         """Traduce valores especiales, como profile = auto de vision al perfil sugerido por el hardware."""

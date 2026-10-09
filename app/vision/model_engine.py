@@ -3,7 +3,7 @@ import logging
 import shutil
 from pathlib import Path
 
-from ..core.app_config import BUNDLED_MODELS_DIR, PROJECT_DIR
+from ..core.app_config import PROJECT_DIR
 from ..core.settings import MODELS_DIR
 
 _log = logging.getLogger(__name__)
@@ -29,9 +29,9 @@ def rect_size(imgsz, width, height, step=32):
 
 
 def weights_path(name):
-    """Busca el .pt en models/, en los modelos incluidos en el .exe y en la raiz; si no existe, la ruta en models/."""
+    """Busca el .pt en models/ y en la raiz; si no existe, la ruta en models/."""
     name = Path(str(name)).name
-    for folder in (MODELS_DIR, BUNDLED_MODELS_DIR, PROJECT_DIR):
+    for folder in (MODELS_DIR, PROJECT_DIR):
         candidate = folder / name
         if candidate.exists():
             return candidate
@@ -72,10 +72,6 @@ def _load_openvino(name, size, notify):
     stem = Path(name).stem
     folder = lambda model_name: MODELS_DIR / f"{model_name}_{height}x{width}_openvino_model"
     target = folder(stem)
-    # Versión ya optimizada incluida en el .exe: se usa directamente
-    bundled = BUNDLED_MODELS_DIR / target.name
-    if not (target / f"{stem}.xml").exists() and (bundled / f"{stem}.xml").exists():
-        return YOLO(str(bundled), task="detect"), stem
     # Exportación única cuando aún no existe la carpeta del modelo convertido
     if not (target / f"{stem}.xml").exists():
         notify(f"Optimizando {stem} para esta CPU (OpenVINO, solo la primera vez)…")

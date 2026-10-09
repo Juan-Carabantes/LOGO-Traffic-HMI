@@ -106,33 +106,14 @@ Desde Python no se usa `setStyleSheet()`: los widgets reciben un `objectName` o 
 
 Se configuran en `app/config/plc.conf`.
 
-## Crear el .exe
-
-Doble clic en `build.bat` (usa el `venv` del proyecto). La primera vez tarda 10-20 minutos:
-
-1. Instala PyInstaller.
-2. Prepara los modelos YOLO26 y sus versiones OpenVINO en `models/` (así el .exe funciona sin internet).
-3. Crea `dist\LOGO-Traffic-HMI.exe`: un solo archivo que no necesita Python ni nada más instalado.
-
-El .exe guarda la configuración, el historial, los registros y las grabaciones en
-`Documentos\LOGO Traffic HMI\`. La primera vez copia ahí la configuración incluida.
-
-### Historial con datos de ejemplo
-
-El .exe empieza con el historial de vehículos vacío: al abrirlo por primera vez crea su propia base en
-`Documentos\LOGO Traffic HMI\data\traffic_history.sqlite3`.
+## Historial con datos de ejemplo
 
 El repositorio incluye una base poblada en `data/traffic_history.sqlite3` con 207,682 vehículos contados
 (30 ago – 28 sep 2026), útil para ver las estadísticas, horas pico y mapa de calor con datos reales.
-Para usarla en el .exe:
+Al ejecutar `python main.py` la app la usa directamente.
 
-1. Cierra la app.
-2. Elimina la base que creó el .exe: `Documentos\LOGO Traffic HMI\data\traffic_history.sqlite3`.
-3. Copia en su lugar la base poblada del repositorio (`data/traffic_history.sqlite3`), con el mismo nombre.
-4. Abre la app: Estadísticas mostrará el historial de ejemplo.
-
-Lo que se haya contado antes en el .exe se pierde al reemplazar la base; si se quiere conservar, se renombra en vez de eliminarla.
-Al ejecutar con `python main.py` no hace falta nada: se usa directamente `data/traffic_history.sqlite3` del proyecto.
+Para empezar con el historial vacío: cierra la app, renombra o elimina `data/traffic_history.sqlite3`
+y vuelve a abrirla; la app crea una base nueva.
 
 ## Convenciones del código
 
