@@ -54,6 +54,22 @@ document.querySelectorAll("video[data-hueco]").forEach((video) => {
 });
 
 
+// --- Video de YouTube: abierto con doble clic (file://) YouTube no lo reproduce (Error 153),
+//     así que se muestra la miniatura con un enlace al video ---
+if (location.protocol === "file:") {
+  document.querySelectorAll('.video iframe[src*="/embed/"]').forEach((iframe) => {
+    const id = iframe.src.split("/embed/")[1].split("?")[0];
+    const enlace = document.createElement("a");
+    enlace.className = "video-miniatura";
+    enlace.href = `https://youtu.be/${id}`;
+    enlace.target = "_blank";
+    enlace.rel = "noopener";
+    enlace.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><span>▶ Ver en YouTube</span>`;
+    iframe.replaceWith(enlace);
+  });
+}
+
+
 // --- Diagrama de bloques: entradas, proceso, salidas, supervision y vision ---
 function dibujarBloques() {
   const svg = document.getElementById("svgBloques");

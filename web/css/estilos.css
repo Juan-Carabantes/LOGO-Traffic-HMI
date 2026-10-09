@@ -134,6 +134,7 @@ img { max-width: 100%; display: block; }
 .galeria figure { margin: 0; }
 .galeria img, .galeria .hueco { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
 .galeria figcaption { margin-top: 8px; color: var(--texto-suave); font-size: .92rem; }
+.galeria-maqueta { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin: 0 auto; }
 
 /* --- Sección de la app --- */
 .app-rejilla { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
@@ -306,8 +307,11 @@ img { max-width: 100%; display: block; }
 
 /* --- Video --- */
 .video { margin-top: 48px; }
-.video video, .video .hueco { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; background: #000; }
+.video video, .video iframe, .video .hueco { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; background: #000; border: 0; display: block; }
 .video .hueco { background: var(--fondo-alterno); }
+.video-miniatura { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; }
+.video-miniatura img { width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+.video-miniatura span { position: absolute; inset: 0; margin: auto; width: max-content; height: max-content; padding: 12px 22px; border-radius: 999px; background: #ff0000; color: #fff; font-weight: 600; }
 
 /* --- Resultados de la vision artificial --- */
 .resultados { margin-top: 64px; }
@@ -435,16 +439,23 @@ img { max-width: 100%; display: block; }
 @media (max-width: 980px) { .carrera-datos { grid-template-columns: repeat(2, 1fr); } }
 .subtitulo-equipo { text-align: center; font-size: 1.35rem; margin: 0 0 20px; }
 .subtitulo-galeria { margin-top: 64px; }
-.galeria-equipo { grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 0 auto; }
+/* 6 columnas: cada foto vertical ocupa 2 (3 por fila), la ancha 4 y la destacada todas */
+.galeria-equipo { grid-template-columns: repeat(6, 1fr); max-width: 960px; margin: 0 auto; }
+.galeria-equipo figure { grid-column: span 2; }
 .galeria-equipo img, .galeria-equipo .hueco { aspect-ratio: 3 / 4; }
 .galeria-equipo .destacada { grid-column: 1 / -1; }
 .galeria-equipo .destacada img, .galeria-equipo .destacada .hueco { aspect-ratio: 16 / 9; }
 /* La foto ancha toma el alto de la fila (el de las fotos verticales de al lado) */
-.galeria-equipo .ancha { grid-column: span 2; }
+.galeria-equipo .ancha { grid-column: span 4; }
 .galeria-equipo .ancha img, .galeria-equipo .ancha .hueco { aspect-ratio: auto; height: 0; min-height: 100%; }
+/* La última fila tiene 2 fotos verticales (equipo_11 y equipo_12): se centran empezando en la columna 2.
+   Si se agregan más fotos y la última fila cambia, borrar esta regla. */
+.galeria-equipo figure:nth-last-child(2):not(.ancha):not(.destacada) { grid-column: 2 / span 2; }
 @media (max-width: 760px) {
   .galeria-equipo { grid-template-columns: repeat(2, 1fr); gap: 12px; grid-auto-flow: dense; }
-  /* Con 2 columnas y un número impar de fotos verticales, la última queda sola: se centra.
+  .galeria-equipo figure, .galeria-equipo figure:nth-last-child(2):not(.ancha):not(.destacada) { grid-column: auto; }
+  .galeria-equipo .destacada, .galeria-equipo .ancha { grid-column: 1 / -1; }
+  /* Con 2 columnas y un número impar de fotos verticales (7), la última queda sola: se centra.
      Si se agrega una vertical más (número par), borrar esta regla. */
   .galeria-equipo figure:last-child:not(.ancha):not(.destacada) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
   .galeria-equipo .ancha img, .galeria-equipo .ancha .hueco { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
