@@ -1,0 +1,52 @@
+/* --- Página Configuración --- */
+
+/* Estilos de app/ui/views/settings_view.py */
+
+QWidget#settingsPage {
+    background: transparent;
+}
+
+/* Etiquetas de los formularios: misma altura que los campos para alinearlas */
+QLabel#formLabel {
+    min-height: 34px;
+    color: var(--soft_text);
+}
+
+/* Lista de secciones a la izquierda (navConfig) */
+QListWidget#navConfig {
+    background-color: var(--area);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 6px;
+    outline: none;
+}
+
+QListWidget#navConfig::item {
+    color: var(--soft_text);
+    padding: 10px 10px;
+    margin: 1px 0;
+    border-radius: 8px;
+}
+
+QListWidget#navConfig::item:hover {
+    background-color: var(--alternative_area);
+    color: var(--text);
+}
+
+QListWidget#navConfig::item:selected {
+    background-color: var(--accent_soft);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+QLabel#valueHighlight {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Pie de creditos con autor y versión (creditsFooter) */
+QLabel#creditsFooter {
+    color: var(--muted_text);
+    font-size: size(small, 8.5pt);
+    padding-top: 4px;
+}

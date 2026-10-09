@@ -1,0 +1,46 @@
+/* --- Base --- */
+
+/* Fondo, tipografía global y elementos genericos */
+/* Variables: app/config/theme.conf -> var(--clave) */
+/* Letras: size(grupo, 9pt) sigue al grupo de ui.conf [fonts] (text, page_title, card_title, subtitle, small, value, log) */
+/* Todas las medidas en px y pt se escalan según la pantalla (app/ui/scale.py) */
+
+QMainWindow,
+QDialog,
+QWidget#appBackground {
+    background-color: var(--window);
+}
+
+QStackedWidget#pages,
+QStackedWidget#pages > QWidget {
+    background-color: var(--window);
+}
+
+QWidget {
+    color: var(--text);
+    font-family: var(--font_family);
+    font-size: size(text, 10pt);
+}
+
+QLabel {
+    background: transparent;
+    border: none;
+}
+
+QToolTip {
+    background-color: var(--alternative_area);
+    color: var(--text);
+    border: 1px solid var(--border_strong);
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+
+QScrollArea,
+QScrollArea > QWidget > QWidget {
+    background: transparent;
+    border: none;
+}
+
+QMessageBox {
+    background-color: var(--area);
+}

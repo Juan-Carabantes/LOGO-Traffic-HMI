@@ -1,0 +1,47 @@
+# --- Entorno de Python ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Datos generados al usar la app ---
+data/
+logs/
+recordings/
+*.sqlite3
+*.db
+*.log
+*.mp4
+*.avi
+!web/img/*.mp4
+*.tmp
+*.bak
+
+# --- Modelos de IA (se descargan con packaging/prepare_models.py) ---
+models/
+*.pt
+*.onnx
+*_openvino_model/
+
+# --- Archivos generados al crear el .exe ---
+build/
+dist/
+*.exe
+
+# --- Configuración local y secretos ---
+.env
+.env.*
+
+# --- Archivos del sistema y del editor ---
+.vscode/
+.idea/
+.claude/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store

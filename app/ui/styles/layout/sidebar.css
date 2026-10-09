@@ -1,0 +1,56 @@
+/* --- Barra lateral --- */
+
+/* Estilos de app/ui/navigation/sidebar.py; anchos y alturas en app/config/ui.conf -> [sidebar] */
+/* La propiedad collapsed centra los botones cuando la barra esta contraida */
+
+QFrame#sidebar {
+    background-color: var(--sidebar);
+    border-right: 1px solid var(--border);
+}
+
+QLabel#sidebarName {
+    font-family: var(--font_display);
+    font-size: size(card_title, 11pt);
+    font-weight: 700;
+    color: var(--text);
+}
+
+QLabel#sidebarSub {
+    font-size: size(small, 8pt);
+    color: var(--muted_text);
+}
+
+QLabel#sidebarSection {
+    font-size: size(small, 7.5pt);
+    font-weight: 700;
+    color: var(--muted_text);
+    padding: 0 0 4px 10px;
+}
+
+QPushButton#navButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--soft_text);
+    text-align: left;
+    padding: 0 10px;
+    min-height: 40px;
+    font-weight: 500;
+    font-size: size(text, 10pt);
+}
+
+QPushButton#navButton[collapsed="true"] {
+    text-align: center;
+    padding: 0;
+}
+
+QPushButton#navButton:hover {
+    background-color: var(--alternative_area);
+    color: var(--text);
+}
+
+QPushButton#navButton:checked {
+    background-color: var(--accent_soft);
+    color: var(--accent);
+    font-weight: 600;
+}

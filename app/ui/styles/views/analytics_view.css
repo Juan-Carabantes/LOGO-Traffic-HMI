@@ -1,0 +1,19 @@
+/* --- Página Estadísticas --- */
+
+/* Estilos de app/ui/views/analytics_view.py */
+/* Gráficas: app/ui/components/charts.py (colores de theme.conf). Tablas: components/table.css */
+
+QWidget#pageScroll {
+    background: transparent;
+}
+
+QLabel#classLabel {
+    font-weight: 600;
+    color: var(--text);
+}
+
+QLabel#classValue {
+    font-family: var(--font_mono);
+    font-size: size(small, 9pt);
+    color: var(--soft_text);
+}

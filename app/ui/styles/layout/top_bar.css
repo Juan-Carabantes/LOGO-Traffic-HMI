@@ -1,0 +1,38 @@
+/* --- Barra superior --- */
+
+/* Estilos de app/ui/navigation/top_bar.py */
+
+QFrame#topBar {
+    background-color: var(--window);
+    border-bottom: 1px solid var(--border);
+}
+
+QLabel#topTitle {
+    font-family: var(--font_display);
+    font-size: size(card_title, 12pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QFrame#topSeparator {
+    background-color: var(--border);
+    border: none;
+}
+
+QLineEdit#ipField {
+    font-family: var(--font_mono);
+    font-size: size(text, 9.5pt);
+}
+
+/* Campana de alarmas (btnAlarms): muestra la cantidad sin reconocer; severity da el color */
+QPushButton#btnAlarms {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0 8px;
+    min-width: 34px;
+    font-weight: 700;
+}
+QPushButton#btnAlarms:hover { background-color: var(--button_hover); border-color: var(--border); }
+QPushButton#btnAlarms[severity="warning"]   { background-color: var(--warning_bg); color: var(--warning); }
+QPushButton#btnAlarms[severity="critical"] { background-color: var(--error_bg);   color: var(--error); }
+QPushButton#btnAlarms[severity="info"]    { background-color: var(--info_bg);    color: var(--info); }

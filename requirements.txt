@@ -1,0 +1,22 @@
+# Versiones probadas en el entorno de desarrollo (venv del proyecto)
+# Instalar con:  pip install -r requirements.txt
+
+# Interfaz gráfica
+PyQt6==6.11.0
+
+# Comunicacion S7 con el Siemens LOGO!
+python-snap7==3.2.0
+
+# Vision artificial
+opencv-python==5.0.0.93
+ultralytics==8.4.160
+lap==0.5.13
+# Acelera la IA ~3 veces en CPU Intel/AMD (opcional pero recomendado)
+openvino==2026.4.0
+torch==2.14.0
+torchvision==0.29.0
+numpy==2.5.3
+
+# Cámaras (nombres reales en Windows) y detección de hardware
+pygrabber==0.2
+psutil==7.2.2

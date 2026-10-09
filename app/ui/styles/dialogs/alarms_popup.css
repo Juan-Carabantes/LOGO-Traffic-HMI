@@ -1,0 +1,26 @@
+/* --- Panel de alarmas --- */
+
+/* Estilos de app/ui/dialogs/alarms_popup.py */
+/* Propiedades de alarmRow: severity = critical | warning | info; active = true | false */
+
+QFrame#alarmsPopup {
+    background-color: var(--area);
+    border: 1px solid var(--border_strong);
+    border-radius: 12px;
+}
+
+QFrame#alarmRow {
+    background-color: var(--alternative_area);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+QFrame#alarmRow QLabel#alarmDot { background-color: var(--neutral); border-radius: 4px; }
+QFrame#alarmRow QLabel#alarmText { font-weight: 600; color: var(--text); }
+QFrame#alarmRow QLabel#alarmDetail { font-size: size(small, 8.5pt); color: var(--muted_text); }
+
+QFrame#alarmRow[active="true"][severity="critical"] { background-color: var(--error_bg);   border-color: var(--error); }
+QFrame#alarmRow[active="true"][severity="warning"]   { background-color: var(--warning_bg); border-color: var(--warning); }
+QFrame#alarmRow[severity="critical"] QLabel#alarmDot { background-color: var(--error); }
+QFrame#alarmRow[severity="warning"]   QLabel#alarmDot { background-color: var(--warning); }
+QFrame#alarmRow[severity="info"]    QLabel#alarmDot { background-color: var(--info); }

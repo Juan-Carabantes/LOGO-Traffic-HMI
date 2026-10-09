@@ -1,0 +1,56 @@
+/* --- Indicador KPI --- */
+
+/* Estilos de app/ui/components/stat_card.py */
+/* Propiedad tone: accent | success | warning | error | text */
+
+QFrame#statCard {
+    background-color: var(--area);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+QFrame#statCard QLabel#statIcon {
+    background-color: var(--accent_soft);
+    border-radius: 8px;
+}
+
+QFrame#statCard QLabel#statLabel {
+    font-size: size(small, 9pt);
+    font-weight: 600;
+    color: var(--soft_text);
+}
+
+QFrame#statCard QLabel#statValue {
+    font-family: var(--font_display);
+    font-size: size(value, 22pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QFrame#statCard QLabel#statUnit {
+    font-size: size(text, 10pt);
+    color: var(--soft_text);
+    padding-bottom: 5px;
+}
+
+QFrame#statCard QLabel#statDetail {
+    font-size: size(small, 8.5pt);
+    color: var(--muted_text);
+}
+
+/* Variante compacta (compact = true): tarjetas bajas debajo del video de la cámara */
+QFrame#statCard[compact="true"] { border-radius: 10px; }
+QFrame#statCard[compact="true"] QLabel#statIcon { border-radius: 6px; }
+QFrame#statCard[compact="true"] QLabel#statValue { font-size: size(value, 16pt); }
+QFrame#statCard[compact="true"] QLabel#statUnit { font-size: size(text, 9pt); padding-bottom: 3px; }
+QFrame#statCard[compact="true"] QLabel#statDetail { font-size: size(small, 8pt); }
+
+/* Fondo del icono y color de la barra según tone */
+QFrame#statCard[tone="success"] QLabel#statIcon { background-color: var(--success_bg); }
+QFrame#statCard[tone="warning"] QLabel#statIcon { background-color: var(--warning_bg); }
+QFrame#statCard[tone="error"]   QLabel#statIcon { background-color: var(--error_bg); }
+QFrame#statCard[tone="text"]    QLabel#statIcon { background-color: var(--alternative_area); }
+
+QFrame#statCard[tone="success"] QProgressBar::chunk { background-color: var(--success); }
+QFrame#statCard[tone="warning"] QProgressBar::chunk { background-color: var(--warning); }
+QFrame#statCard[tone="error"]   QProgressBar::chunk { background-color: var(--error); }

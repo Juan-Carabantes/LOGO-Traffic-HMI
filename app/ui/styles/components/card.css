@@ -1,0 +1,20 @@
+/* --- Tarjeta --- */
+
+/* Panel con título y subtitulo: app/ui/components/card.py */
+
+QFrame#card {
+    background-color: var(--area);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+QFrame#card QLabel#cardTitle {
+    font-size: size(card_title, 11pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QFrame#card QLabel#cardSubtitle {
+    font-size: size(subtitle, 8.5pt);
+    color: var(--soft_text);
+}

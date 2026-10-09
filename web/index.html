@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOGO! Traffic HMI</title>
+  <meta name="description" content="Semáforo inteligente controlado con PLC Siemens LOGO!, cruce peatonal y visión artificial.">
+  <link rel="icon" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- --- Barra de navegación --- -->
+<header class="nav" id="nav">
+  <div class="nav-contenido">
+    <a class="marca" href="#inicio">
+      <img src="img/logo_traffic_hmi.png" alt="" width="32" height="32">
+      <span>LOGO! Traffic HMI</span>
+    </a>
+    <button class="nav-boton" id="navBoton" aria-label="Abrir menú"><span data-icono="nav_menu"></span></button>
+    <nav class="nav-enlaces" id="navEnlaces">
+      <a href="#proyecto">Proyecto</a>
+      <a href="#funcionamiento">Funcionamiento</a>
+      <a href="#diagramas">Diagramas</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#maqueta">Maqueta</a>
+      <a href="#app">App</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#creditos">Créditos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- --- Portada --- -->
+<section class="portada" id="inicio">
+  <div class="contenedor portada-rejilla">
+    <div>
+      <span class="etiqueta">Proyecto de automatización e innovación · ITCHA</span>
+      <h1>Semáforo inteligente con PLC Siemens LOGO!</h1>
+      <p class="portada-texto">Control de semáforo con cruce peatonal, supervisión desde la computadora y monitoreo por cámara con visión artificial para analizar el tráfico.</p>
+      <div class="acciones">
+        <a class="boton primario" href="#diagramas">Ver diagramas</a>
+        <a class="boton secundario" href="#proyecto">Conocer el proyecto</a>
+      </div>
+    </div>
+    <div class="portada-imagen">
+      <img src="img/portada.jpg" alt="Foto principal del proyecto" data-respaldo="semaforo" data-zoom>
+    </div>
+  </div>
+</section>
+
+<!-- --- Descripcion del proyecto --- -->
+<section class="seccion" id="proyecto">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">El proyecto</span>
+      <h2>¿En qué consiste?</h2>
+      <p>Un semáforo controlado por un PLC Siemens LOGO! 230RCE y supervisado desde una computadora por red. Cuenta con cruce peatonal para que los peatones soliciten el paso. Una cámara cuenta los vehículos y sugiere tiempos para cada luz según la demanda.</p>
+    </div>
+
+    <div class="caracteristicas">
+      <article class="caracteristica">
+        <span class="icono" data-icono="nav_hmi"></span>
+        <h3>Control con PLC</h3>
+        <p>Ciclo verde, amarillo y rojo programado en el LOGO! con Marcha, Paro y Cruce peatonal.</p>
+      </article>
+      <article class="caracteristica">
+        <span class="icono" data-icono="action_walk"></span>
+        <h3>Cruce peatonal</h3>
+        <p>El botón peatonal guarda la solicitud y cambia el tiempo de la luz roja para que el peatón cruce seguro.</p>
+      </article>
+      <article class="caracteristica">
+        <span class="icono" data-icono="device_monitor"></span>
+        <h3>Supervisión remota</h3>
+        <p>Desde la computadora se ve el estado del semáforo y se dan las órdenes de Marcha, Paro y Cruce.</p>
+      </article>
+      <article class="caracteristica">
+        <span class="icono" data-icono="nav_camera"></span>
+        <h3>Visión artificial</h3>
+        <p>La cámara cuenta vehículos, mide su velocidad y genera estadística del flujo vehicular.</p>
+      </article>
+    </div>
+
+    <!-- Datos principales: se cambia el número y el texto de cada uno -->
+    <div class="datos">
+      <div class="dato"><b>4</b><span>Salidas del PLC</span></div>
+      <div class="dato"><b>3</b><span>Entradas de control</span></div>
+      <div class="dato"><b>120 V</b><span>Alimentación AC</span></div>
+      <div class="dato"><b>S7</b><span>Comunicación por red</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- --- Funcionamiento: pasos del ciclo y tabla de entradas y salidas --- -->
+<section class="seccion alterna" id="funcionamiento">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Funcionamiento</span>
+      <h2>¿Cómo trabaja el semáforo?</h2>
+      <p>El LOGO! repite el ciclo de luces de forma automática desde que se pulsa Marcha hasta que se pulsa Paro.</p>
+    </div>
+
+    <ol class="pasos">
+      <li class="paso">
+        <span class="paso-luz" style="--luz: var(--acento)">1</span>
+        <h3>Marcha</h3>
+        <p>Al pulsar I1 se activa el circuito y se enciende el piloto de circuito activo.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-luz" style="--luz: var(--verde)">2</span>
+        <h3>Luz verde</h3>
+        <p>Los vehículos avanzan durante el tiempo del temporizador del verde.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-luz" style="--luz: var(--amarillo)">3</span>
+        <h3>Luz amarilla</h3>
+        <p>Aviso de precaución: el semáforo está por cambiar a rojo.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-luz" style="--luz: var(--rojo)">4</span>
+        <h3>Luz roja</h3>
+        <p>Los vehículos se detienen. Si un peatón pulsó el botón, el rojo cambia de tiempo para dejarlo cruzar.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-luz" style="--luz: #94a3b8">5</span>
+        <h3>Paro</h3>
+        <p>Al pulsar I2 el circuito se detiene y todas las luces se apagan.</p>
+      </li>
+    </ol>
+
+    <div class="es-rejilla">
+      <div class="tarjeta">
+        <h3>Entradas</h3>
+        <table class="tabla">
+          <tbody>
+            <tr><td><span class="borne">I1</span></td><td>Pulsador de Marcha</td></tr>
+            <tr><td><span class="borne">I2</span></td><td>Pulsador de Paro</td></tr>
+            <tr><td><span class="borne">I3</span></td><td>Botón de cruce peatonal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tarjeta">
+        <h3>Salidas</h3>
+        <table class="tabla">
+          <tbody>
+            <tr><td><span class="borne" style="--luz: var(--verde)">Q1</span></td><td>Luz verde</td></tr>
+            <tr><td><span class="borne" style="--luz: var(--amarillo)">Q2</span></td><td>Luz amarilla</td></tr>
+            <tr><td><span class="borne" style="--luz: var(--rojo)">Q3</span></td><td>Luz roja</td></tr>
+            <tr><td><span class="borne" style="--luz: #22b8cf">Q4</span></td><td>Piloto de circuito activo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --- Diagramas: cada imagen se amplia al hacer clic --- -->
+<section class="seccion" id="diagramas">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Documentación técnica</span>
+      <h2>Diagramas</h2>
+      <p>Haz clic en cualquier diagrama para verlo en grande.</p>
+    </div>
+
+    <div class="diagramas">
+      <article class="diagrama">
+        <div class="diagrama-imagen"><img src="img/diagrama_electrico.png" alt="Diagrama eléctrico" data-hueco="img/diagrama_electrico.png" data-zoom></div>
+        <div class="diagrama-texto">
+          <h3>Diagrama eléctrico</h3>
+          <p>Alimentación de 120 V, protecciones, conexión del LOGO!, pulsadores y luces del semáforo.</p>
+        </div>
+      </article>
+      <article class="diagrama">
+        <div class="diagrama-imagen"><img src="img/programa_logo.png" alt="Programa del LOGO!" data-hueco="img/programa_logo.png" data-zoom></div>
+        <div class="diagrama-texto">
+          <h3>Programa del LOGO!</h3>
+          <p>Programa "Tablero Principal" con 45 bloques: compuertas lógicas (AND, OR, NOT), biestables, temporizadores, generadores de pulsos, entradas y salidas.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Composición del programa del LOGO!: cantidad de bloques por tipo -->
+    <article class="tarjeta programa">
+      <div class="programa-total">
+        <b>45</b>
+        <span>bloques en el programa del LOGO!</span>
+      </div>
+      <div class="programa-tipos">
+        <div class="tipo"><span class="simbolo">&amp;</span><div><b>10</b><small>Compuertas AND</small></div></div>
+        <div class="tipo"><span class="simbolo">1</span><div><b>7</b><small>Compuertas NOT</small></div></div>
+        <div class="tipo"><span class="simbolo">≥1</span><div><b>6</b><small>Compuertas OR</small></div></div>
+        <div class="tipo"><span class="simbolo" data-icono="nav_timer"></span><div><b>5</b><small>Temporizadores con retardo a la conexión</small></div></div>
+        <div class="tipo"><span class="simbolo">RS</span><div><b>2</b><small>Biestables RS</small></div></div>
+        <div class="tipo"><span class="simbolo" data-icono="status_wave"></span><div><b>2</b><small>Generadores de pulsos (intermitentes)</small></div></div>
+      </div>
+      <p class="programa-nota">32 bloques de funciones y 13 de entradas y salidas: 3 entradas (I1–I3), 3 marcas para la app (M1–M3), 3 teclas de cursor del LOGO! (C1–C3) y 4 salidas (Q1–Q4).</p>
+    </article>
+
+    <!-- Diagrama de bloques dibujado en la página (lo arma js/app.js) -->
+    <article class="diagrama comunicacion">
+      <div class="diagrama-texto">
+        <h3>Diagrama de bloques</h3>
+        <p>Recorrido de las señales: los pulsadores entran al LOGO!, el programa decide qué luz encender y la computadora supervisa el proceso con la ayuda de la cámara.</p>
+      </div>
+      <div class="red-envoltura"><svg id="svgBloques" viewBox="0 0 1000 585" role="img" aria-label="Diagrama de bloques del sistema: entradas, LOGO!, salidas, semáforo, computadora y cámara"></svg></div>
+      <ul class="red-leyenda">
+        <li><span class="linea cable"></span><b>Señal:</b> sentido en que viaja la información</li>
+        <li><span class="linea s7"></span><b>Ethernet S7:</b> la app lee el estado y envía Marcha, Paro y Cruce</li>
+        <li><span class="linea usb"></span><b>USB:</b> video de la cámara hacia la computadora</li>
+        <li><span class="linea wifi"></span><b>Solo informativo:</b> tiempos sugeridos para reprogramar el LOGO!</li>
+      </ul>
+    </article>
+
+    <!-- Diagrama de comunicacion dibujado en la página (lo arma js/app.js) -->
+    <article class="diagrama comunicacion">
+      <div class="diagrama-texto">
+        <h3>Diagrama de comunicación</h3>
+        <p>Del router salen dos cables Ethernet: uno hacia el LOGO! y otro hacia la computadora. A través de esa red la computadora se comunica con el LOGO!.</p>
+      </div>
+      <div class="red-envoltura"><svg id="svgRed" viewBox="0 0 960 440" role="img" aria-label="Diagrama de comunicación entre el LOGO!, el router, la computadora y la cámara"></svg></div>
+      <ul class="red-leyenda">
+        <li><span class="linea cable"></span><b>Cable Ethernet:</b> router ↔ LOGO! y router ↔ computadora</li>
+        <li><span class="linea s7"></span><b>Protocolo S7:</b> la computadora lee entradas y salidas del LOGO! y envía Marcha, Paro y Cruce</li>
+        <li><span class="linea usb"></span><b>USB:</b> cámara ↔ computadora</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- --- Componentes principales --- -->
+<section class="seccion alterna" id="componentes">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Materiales</span>
+      <h2>Componentes principales</h2>
+    </div>
+    <div class="componentes">
+      <div class="componente"><span class="icono" data-icono="status_cpu"></span><div><h3>Siemens LOGO! 230RCE</h3><p>PLC que controla el semáforo, alimentado a 120 V AC.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="device_button"></span><div><h3>Pulsadores</h3><p>Marcha, Paro y botón de cruce peatonal.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="status_bulb"></span><div><h3>Focos de 120 V</h3><p>Luces verde, amarilla y roja del semáforo.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="status_activity"></span><div><h3>Piloto indicador</h3><p>Muestra que el circuito está activo (Q4).</p></div></div>
+      <div class="componente"><span class="icono" data-icono="device_panel"></span><div><h3>Tablero y protecciones</h3><p>Breaker, borneras, canaleta y cableado.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="device_router"></span><div><h3>Router</h3><p>Red Ethernet entre el LOGO! y la computadora.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="device_monitor"></span><div><h3>Computadora</h3><p>Ejecuta la app LOGO! Traffic HMI.</p></div></div>
+      <div class="componente"><span class="icono" data-icono="nav_camera"></span><div><h3>Cámara USB</h3><p>Captura el tráfico para el conteo de vehículos.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- --- Fotos y video de la maqueta --- -->
+<section class="seccion" id="maqueta">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Construcción</span>
+      <h2>Maqueta</h2>
+      <p>Cruce de calle a escala con semáforos, botones peatonales y tablero de control.</p>
+    </div>
+    <!-- Para agregar otra foto se copia una línea <figure> y se cambia el nombre del archivo -->
+    <div class="galeria">
+      <figure><img src="img/maqueta_1.jpg" alt="Vista general de la maqueta" data-hueco="img/maqueta_1.jpg" data-zoom><figcaption>Vista general</figcaption></figure>
+      <figure><img src="img/maqueta_2.jpg" alt="Tablero de control" data-hueco="img/maqueta_2.jpg" data-zoom><figcaption>Tablero de control</figcaption></figure>
+      <figure><img src="img/maqueta_3.jpg" alt="Semáforo" data-hueco="img/maqueta_3.jpg" data-zoom><figcaption>Semáforo</figcaption></figure>
+      <figure><img src="img/maqueta_4.jpg" alt="Cruce peatonal" data-hueco="img/maqueta_4.jpg" data-zoom><figcaption>Cruce peatonal</figcaption></figure>
+      <figure><img src="img/maqueta_5.jpg" alt="Cableado del tablero" data-hueco="img/maqueta_5.jpg" data-zoom><figcaption>Cableado del tablero</figcaption></figure>
+      <figure><img src="img/maqueta_6.jpg" alt="Cámara de monitoreo" data-hueco="img/maqueta_6.jpg" data-zoom><figcaption>Cámara de monitoreo</figcaption></figure>
+    </div>
+
+    <!-- Video demostrativo: guardar el video como img/demostracion.mp4 -->
+    <div class="video">
+      <h3>Video demostrativo</h3>
+      <video controls preload="metadata" src="img/demostracion.mp4" data-hueco="img/demostracion.mp4"></video>
+    </div>
+  </div>
+</section>
+
+<!-- --- Aplicación de escritorio --- -->
+<section class="seccion alterna" id="app">
+  <div class="contenedor app-rejilla">
+    <div class="app-imagen"><img src="img/app_estadisticas.png" alt="Página Estadísticas de la app LOGO! Traffic HMI" data-hueco="img/app_estadisticas.png" data-zoom></div>
+    <div>
+      <span class="sobretitulo">Software</span>
+      <h2>App LOGO! Traffic HMI</h2>
+      <p>Programa de escritorio hecho en Python que funciona como HMI del semáforo: supervisa y controla el LOGO! por la red y usa la cámara para analizar el tráfico con inteligencia artificial.</p>
+      <ul class="lista">
+        <li>Semáforo en vivo y estado de cada entrada y salida.</li>
+        <li>Marcha, Paro y Cruce peatonal desde la computadora.</li>
+        <li>Conteo de vehículos, velocidad y tiempos sugeridos por la cámara.</li>
+        <li>Estadísticas, alarmas y reportes en CSV y PDF.</li>
+      </ul>
+      <div class="chips">
+        <span>Python</span><span>PyQt6</span><span>python-snap7</span><span>YOLO</span><span>OpenVINO</span><span>OpenCV</span><span>SQLite</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Páginas de la app: una fila por página con su captura y descripcion -->
+  <div class="contenedor">
+    <div class="titulo-seccion subtitulo-app">
+      <h2>Páginas de la aplicación</h2>
+      <p>Capturas de la app funcionando con datos de prueba. Haz clic en una imagen para verla en grande.</p>
+    </div>
+
+    <div class="pantallas">
+      <article class="pantalla">
+        <div class="pantalla-imagen"><img src="img/app_semaforo.png" alt="Página Semáforo" data-hueco="img/app_semaforo.png" data-zoom></div>
+        <div class="pantalla-texto">
+          <span class="numero">01</span>
+          <h3>Semáforo</h3>
+          <p>Es la pantalla principal del HMI. Muestra el semáforo tal como lo reporta el LOGO! y el estado del circuito.</p>
+          <ul class="lista">
+            <li>Tarjetas de salidas (Q) y entradas (I) con cronómetro del tiempo encendido.</li>
+            <li>Botones de control remoto: Marcha (M1), Paro (M2) y Peatón (M3).</li>
+            <li>Registro de eventos con cada cambio leído del PLC.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pantalla">
+        <div class="pantalla-imagen"><img src="img/app_camara.jpg" alt="Página Cámara" data-hueco="img/app_camara.jpg" data-zoom></div>
+        <div class="pantalla-texto">
+          <span class="numero">02</span>
+          <h3>Cámara</h3>
+          <p>Video en vivo con la detección de vehículos por inteligencia artificial.</p>
+          <ul class="lista">
+            <li>Detecta autos, motos, buses y camiones con YOLO acelerado con OpenVINO.</li>
+            <li>Hasta 4 líneas de conteo con sentido, ajustables con el ratón.</li>
+            <li>Velocidad de cada vehículo, zona de detección y grabación en MP4.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pantalla">
+        <div class="pantalla-imagen"><img src="img/app_estadisticas.png" alt="Página Estadísticas" data-hueco="img/app_estadisticas.png" data-zoom></div>
+        <div class="pantalla-texto">
+          <span class="numero">03</span>
+          <h3>Estadísticas</h3>
+          <p>Historial del tráfico guardado en una base de datos para analizar la demanda.</p>
+          <ul class="lista">
+            <li>Vehículos totales, hora pico, promedio diario y velocidad media.</li>
+            <li>Gráficas por hora, tendencia por día y mapa de calor semanal.</li>
+            <li>Composición por tipo de vehículo y exportación a CSV y PDF.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pantalla">
+        <div class="pantalla-imagen"><img src="img/app_recomendaciones.png" alt="Página Recomendaciones" data-hueco="img/app_recomendaciones.png" data-zoom></div>
+        <div class="pantalla-texto">
+          <span class="numero">04</span>
+          <h3>Recomendaciones</h3>
+          <p>Propone un tiempo para cada temporizador del LOGO! según el tráfico que ve la cámara.</p>
+          <ul class="lista">
+            <li>Verde (B3), amarillo (B21), rojo (B6) y cruce peatonal (B13).</li>
+            <li>Usa el caudal, los vehículos en escena y la velocidad media.</li>
+            <li>Es solo informativo: sirve para reprogramar el LOGO! en LOGO!Soft.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pantalla">
+        <div class="pantalla-imagen"><img src="img/app_configuracion.png" alt="Página Configuración" data-hueco="img/app_configuracion.png" data-zoom></div>
+        <div class="pantalla-texto">
+          <span class="numero">05</span>
+          <h3>Configuración</h3>
+          <p>Todos los ajustes de la app en un solo lugar, guardados en archivos editables.</p>
+          <ul class="lista">
+            <li>Conexión S7: IP del LOGO!, TSAP, intervalo de lectura y reconexión.</li>
+            <li>Cámara, detección IA, calibración, alarmas y apariencia.</li>
+            <li>Botón Restablecer para volver a los valores de fábrica.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Funciones principales -->
+  <div class="contenedor bloque-app">
+    <h3 class="titulo-bloque">Funciones principales</h3>
+    <div class="funciones">
+      <div class="funcion"><span class="icono" data-icono="action_plug"></span><h4>Enlace S7</h4><p>Lee entradas y salidas del LOGO! cada 100 ms por Ethernet.</p></div>
+      <div class="funcion"><span class="icono" data-icono="action_play"></span><h4>Control remoto</h4><p>Envía pulsos a las marcas M1, M2 y M3 del LOGO!.</p></div>
+      <div class="funcion"><span class="icono" data-icono="status_activity"></span><h4>Reconexión automática</h4><p>Si se pierde el enlace, vuelve a conectar solo.</p></div>
+      <div class="funcion"><span class="icono" data-icono="nav_camera"></span><h4>Visión artificial</h4><p>Cuenta vehículos y mide su velocidad en tiempo real.</p></div>
+      <div class="funcion"><span class="icono" data-icono="status_bulb"></span><h4>Tiempos sugeridos</h4><p>Propone tiempos para cada luz según la demanda.</p></div>
+      <div class="funcion"><span class="icono" data-icono="status_bell"></span><h4>Alarmas</h4><p>Avisa si se pierde el PLC, hay congestión, cola larga o no hay video.</p></div>
+      <div class="funcion"><span class="icono" data-icono="nav_analytics"></span><h4>Historial y reportes</h4><p>Guarda el tráfico en SQLite y exporta a CSV y PDF.</p></div>
+      <div class="funcion"><span class="icono" data-icono="nav_settings"></span><h4>Configurable</h4><p>Tema claro y oscuro, y ajustes en archivos .conf.</p></div>
+    </div>
+  </div>
+
+  <!-- Arquitectura del software -->
+  <div class="contenedor bloque-app">
+    <h3 class="titulo-bloque">¿Cómo está hecha?</h3>
+    <div class="modulos">
+      <div class="modulo"><code>plc/</code><h4>Comunicación</h4><p>Cliente S7 con python-snap7 en un hilo aparte para no congelar la pantalla.</p></div>
+      <div class="modulo"><code>vision/</code><h4>Visión</h4><p>Captura, detección YOLO, seguimiento BoT-SORT, líneas de conteo y calibración de velocidad.</p></div>
+      <div class="modulo"><code>analytics/</code><h4>Análisis</h4><p>Caudal, ocupación de la vía, reglas de tiempos sugeridos e historial en SQLite.</p></div>
+      <div class="modulo"><code>ui/</code><h4>Interfaz</h4><p>PyQt6 con estilos en hojas CSS y diseño que se adapta al tamaño de la pantalla.</p></div>
+    </div>
+  </div>
+
+  <!-- Resultados de las pruebas del sistema de vision -->
+  <div class="contenedor resultados">
+    <h3>Pruebas del sistema de visión</h3>
+    <p class="nota">Historial de muestra de una carretera de dos carriles registrado en la app durante 30 días.</p>
+    <div class="datos datos-app">
+      <div class="dato"><b>207,589</b><span>Vehículos registrados</span></div>
+      <div class="dato"><b>30</b><span>Días de registro</span></div>
+      <div class="dato"><b>6,920</b><span>Vehículos por día</span></div>
+      <div class="dato"><b>38 km/h</b><span>Velocidad media</span></div>
+    </div>
+    <div class="barras">
+      <div class="barra"><span>Autos</span><div><i style="width:100%"></i></div><b>141,356</b></div>
+      <div class="barra"><span>Motos</span><div><i style="width:25%"></i></div><b>35,332</b></div>
+      <div class="barra"><span>Camiones</span><div><i style="width:11.7%"></i></div><b>16,524</b></div>
+      <div class="barra"><span>Buses</span><div><i style="width:10.2%"></i></div><b>14,377</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- --- Equipo del proyecto: foto del equipo (guardar como img/equipo.jpg) --- -->
+<section class="seccion" id="equipo">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Equipo</span>
+      <h2>Equipo del proyecto</h2>
+      <p>Estudiantes del Instituto Tecnológico de Chalatenango que desarrollaron el semáforo inteligente.</p>
+    </div>
+    <figure class="equipo-foto">
+      <img src="img/equipo.jpg" alt="Foto del equipo del proyecto" data-hueco="img/equipo.jpg" data-zoom>
+      <!-- Pie de foto: se cambia por los nombres del equipo o se borra -->
+      <figcaption>Equipo del proyecto de semaforización con PLC Siemens LOGO!</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- --- Creditos --- -->
+<section class="seccion alterna" id="creditos">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <span class="sobretitulo">Créditos</span>
+      <h2>Desarrollado por</h2>
+    </div>
+    <div class="creditos">
+      <img src="img/logo_traffic_hmi.png" alt="Logo de LOGO! Traffic HMI" width="88" height="88">
+      <h3>LOGO! Traffic HMI <span>v1.0.0</span></h3>
+      <p class="autor">Juan Carabantes</p>
+      <a href="https://github.com/Juan-Carabantes" target="_blank" rel="noopener">github.com/Juan-Carabantes</a>
+      <p class="institucion">Instituto Tecnológico de Chalatenango (ITCHA) · El Salvador</p>
+      <!-- Para agregar integrantes del equipo se quita este comentario y se cambian los nombres:
+      <div class="equipo">
+        <span>Nombre del integrante</span>
+        <span>Nombre del integrante</span>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- --- Pie de página --- -->
+<footer class="pie">
+  <div class="contenedor">
+    LOGO! Traffic HMI v1.0.0 · Desarrollado por Juan Carabantes ·
+    <a href="https://github.com/Juan-Carabantes" target="_blank" rel="noopener">github.com/Juan-Carabantes</a>
+  </div>
+</footer>
+
+<!-- --- Visor de imágenes ampliadas --- -->
+<div class="visor" id="visor" hidden>
+  <button class="visor-cerrar" id="visorCerrar" aria-label="Cerrar">×</button>
+  <img id="visorImagen" alt="">
+  <p id="visorTexto"></p>
+</div>
+
+<script src="js/iconos.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

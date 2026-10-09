@@ -1,0 +1,89 @@
+/* --- Campos de formulario --- */
+
+/* Texto, números, listas y casillas */
+
+QLineEdit,
+QSpinBox,
+QDoubleSpinBox,
+QComboBox {
+    background-color: var(--field);
+    color: var(--text);
+    border: 1px solid var(--border_strong);
+    border-radius: 8px;
+    padding: 0 10px;
+    min-height: 34px;
+    selection-background-color: var(--accent);
+    selection-color: var(--on_accent);
+}
+
+QLineEdit:hover, QSpinBox:hover, QDoubleSpinBox:hover, QComboBox:hover {
+    border-color: var(--muted_text);
+}
+
+QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus {
+    border: 1px solid var(--accent);
+}
+
+QLineEdit:disabled, QSpinBox:disabled, QDoubleSpinBox:disabled, QComboBox:disabled {
+    background-color: var(--alternative_area);
+    color: var(--muted_text);
+    border-color: var(--border);
+}
+
+QSpinBox::up-button, QSpinBox::down-button,
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
+    width: 18px;
+    border: none;
+    background: transparent;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 26px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: var(--area);
+    color: var(--text);
+    border: 1px solid var(--border_strong);
+    border-radius: 8px;
+    padding: 4px;
+    outline: none;
+    selection-background-color: var(--active_area);
+    selection-color: var(--text);
+}
+
+/* --- Casillas de verificacion --- */
+
+QCheckBox {
+    color: var(--text);
+    spacing: 10px;
+    min-height: 26px;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1px solid var(--border_strong);
+    background: var(--field);
+}
+
+QCheckBox::indicator:hover   { border-color: var(--accent); }
+QCheckBox::indicator:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* --- Barras de progreso finas --- */
+
+QProgressBar {
+    background-color: var(--alternative_area);
+    border: none;
+    border-radius: 3px;
+}
+
+QProgressBar::chunk {
+    background-color: var(--accent);
+    border-radius: 3px;
+}

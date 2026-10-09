@@ -1,0 +1,5 @@
+# Finales de linea uniformes en el repositorio
+* text=auto
+*.png binary
+*.ico binary
+*.svg text

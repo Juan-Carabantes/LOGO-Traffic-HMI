@@ -1,0 +1,30 @@
+/* --- Tipografía --- */
+
+/* Jerarquia de textos: títulos de página, ayudas y etiquetas de grupo */
+
+/* Título grande y descripcion de cada página (pageTitle, pageDescription) */
+QLabel#pageTitle {
+    font-family: var(--font_display);
+    font-size: size(page_title, 17pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QLabel#pageDescription {
+    font-size: size(subtitle, 9.5pt);
+    color: var(--soft_text);
+}
+
+/* Etiqueta de grupo en mayusculas (groupLabel) */
+QLabel#groupLabel {
+    font-size: size(small, 8pt);
+    font-weight: 600;
+    color: var(--muted_text);
+    padding-top: 2px;
+}
+
+/* Parrafos de ayuda dentro de tarjetas (helpText) */
+QLabel#helpText {
+    font-size: size(small, 9pt);
+    color: var(--soft_text);
+}

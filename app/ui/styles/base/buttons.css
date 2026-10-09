@@ -1,0 +1,104 @@
+/* --- Botones --- */
+
+/* Uso: button.setProperty("variant", "primary") */
+/* Variantes: primary | secondary | ghost | danger | icon | control */
+
+QPushButton {
+    background-color: var(--button);
+    color: var(--text);
+    border: 1px solid var(--border_strong);
+    border-radius: 8px;
+    padding: 0 14px;
+    min-height: 34px;
+    font-weight: 600;
+}
+
+QPushButton:hover    { background-color: var(--button_hover); }
+QPushButton:pressed  { background-color: var(--button_pressed); }
+QPushButton:focus    { outline: none; }
+
+QPushButton:disabled {
+    color: var(--muted_text);
+    background-color: var(--alternative_area);
+    border-color: var(--border);
+}
+
+/* --- Variante primary: acción principal de la página --- */
+
+QPushButton[variant="primary"] {
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+    color: var(--on_accent);
+}
+QPushButton[variant="primary"]:hover   { background-color: var(--accent_hover); border-color: var(--accent_hover); }
+QPushButton[variant="primary"]:pressed { background-color: var(--accent); }
+QPushButton[variant="primary"]:disabled {
+    background-color: var(--accent_soft);
+    border-color: var(--accent_soft);
+    color: var(--muted_text);
+}
+
+/* --- Variante secondary --- */
+
+QPushButton[variant="secondary"] {
+    background-color: var(--button);
+    border: 1px solid var(--border_strong);
+}
+
+/* --- Variante ghost: sin fondo --- */
+
+QPushButton[variant="ghost"] {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--soft_text);
+}
+QPushButton[variant="ghost"]:hover {
+    background-color: var(--button_hover);
+    color: var(--text);
+}
+QPushButton[variant="ghost"]:disabled {
+    background-color: transparent;
+    color: var(--muted_text);
+}
+
+/* --- Variante danger: detener o desconectar --- */
+
+QPushButton[variant="danger"] {
+    background-color: var(--disconnect_button);
+    border: 1px solid var(--disconnect_button);
+    color: var(--on_accent);
+}
+QPushButton[variant="danger"]:hover { border-color: var(--error); }
+
+/* --- Variante icon: botón cuadrado solo con icono --- */
+
+QPushButton[variant="icon"] {
+    background-color: transparent;
+    border: 1px solid transparent;
+    min-width: 34px;
+    max-width: 34px;
+    padding: 0;
+}
+QPushButton[variant="icon"]:hover {
+    background-color: var(--button_hover);
+    border-color: var(--border);
+}
+
+/* --- Variante control: botones del semáforo (Marcha, Paro, Peatón) --- */
+
+/* La propiedad signal (green | red | blue) da el color al pasar el mouse */
+QPushButton[variant="control"] {
+    min-height: 44px;
+    font-size: size(text, 10pt);
+    background-color: var(--alternative_area);
+    border: 1px solid var(--border_strong);
+}
+QPushButton[variant="control"][signal="green"]:hover { background-color: var(--signal_bg_green); border-color: var(--signal_green); }
+QPushButton[variant="control"][signal="red"]:hover   { background-color: var(--signal_bg_red);   border-color: var(--signal_red); }
+QPushButton[variant="control"][signal="blue"]:hover  { background-color: var(--signal_bg_blue);  border-color: var(--signal_blue); }
+QPushButton[variant="control"]:pressed { background-color: var(--button_pressed); }
+QPushButton[variant="control"]:disabled {
+    background-color: var(--alternative_area);
+    border-color: var(--border);
+    color: var(--muted_text);
+}

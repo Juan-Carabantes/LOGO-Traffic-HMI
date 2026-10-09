@@ -1,0 +1,16 @@
+/* --- Página Semáforo (HMI) --- */
+
+/* Estilos de app/ui/views/hmi_view.py */
+/* Tarjetas de E/S: widgets/io_tile.css. Botones: base/buttons.css */
+
+/* Consola del registro de eventos (eventLog) */
+QPlainTextEdit#eventLog {
+    background-color: var(--register);
+    color: var(--register_text);
+    border: 1px solid var(--register_border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-family: var(--font_mono);
+    font-size: size(log, 9pt);
+    selection-background-color: var(--accent);
+}

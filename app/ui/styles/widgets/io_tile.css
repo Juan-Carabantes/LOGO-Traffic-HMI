@@ -1,0 +1,67 @@
+/* --- Tarjeta de E/S --- */
+
+/* Señal digital con LED: app/ui/widgets/io_tile.py */
+/* Propiedades: active = true | false; signal = green | yellow | red | cyan | orange | blue */
+
+QFrame#ioTile {
+    background-color: var(--alternative_area);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+QFrame#ioTile QLabel#ioLed {
+    background-color: var(--border_strong);
+    border-radius: 5px;
+}
+
+QFrame#ioTile QLabel#ioCode {
+    font-family: var(--font_mono);
+    font-size: size(text, 9.5pt);
+    font-weight: 700;
+    color: var(--soft_text);
+}
+
+QFrame#ioTile QLabel#ioName {
+    font-size: size(small, 8.5pt);
+    color: var(--muted_text);
+}
+
+QFrame#ioTile QLabel#ioState {
+    font-family: var(--font_mono);
+    font-size: size(small, 8.5pt);
+    font-weight: 700;
+    color: var(--muted_text);
+}
+
+QFrame#ioTile QLabel#ioTime {
+    font-family: var(--font_mono);
+    font-size: size(small, 8pt);
+    color: var(--muted_text);
+}
+
+/* Señal activa: texto claro */
+QFrame#ioTile[active="true"] QLabel#ioCode,
+QFrame#ioTile[active="true"] QLabel#ioName,
+QFrame#ioTile[active="true"] QLabel#ioTime { color: var(--text); }
+
+/* Señal activa: fondo, borde, LED y estado del color de la señal */
+QFrame#ioTile[active="true"][signal="green"]  { background-color: var(--signal_bg_green);  border-color: var(--signal_green); }
+QFrame#ioTile[active="true"][signal="yellow"] { background-color: var(--signal_bg_yellow); border-color: var(--signal_yellow); }
+QFrame#ioTile[active="true"][signal="red"]    { background-color: var(--signal_bg_red);    border-color: var(--signal_red); }
+QFrame#ioTile[active="true"][signal="cyan"]   { background-color: var(--signal_bg_cyan);   border-color: var(--signal_cyan); }
+QFrame#ioTile[active="true"][signal="orange"] { background-color: var(--signal_bg_orange); border-color: var(--signal_orange); }
+QFrame#ioTile[active="true"][signal="blue"]   { background-color: var(--signal_bg_blue);   border-color: var(--signal_blue); }
+
+QFrame#ioTile[active="true"][signal="green"]  QLabel#ioLed { background-color: var(--signal_green); }
+QFrame#ioTile[active="true"][signal="yellow"] QLabel#ioLed { background-color: var(--signal_yellow); }
+QFrame#ioTile[active="true"][signal="red"]    QLabel#ioLed { background-color: var(--signal_red); }
+QFrame#ioTile[active="true"][signal="cyan"]   QLabel#ioLed { background-color: var(--signal_cyan); }
+QFrame#ioTile[active="true"][signal="orange"] QLabel#ioLed { background-color: var(--signal_orange); }
+QFrame#ioTile[active="true"][signal="blue"]   QLabel#ioLed { background-color: var(--signal_blue); }
+
+QFrame#ioTile[active="true"][signal="green"]  QLabel#ioState { color: var(--signal_green); }
+QFrame#ioTile[active="true"][signal="yellow"] QLabel#ioState { color: var(--signal_yellow); }
+QFrame#ioTile[active="true"][signal="red"]    QLabel#ioState { color: var(--signal_red); }
+QFrame#ioTile[active="true"][signal="cyan"]   QLabel#ioState { color: var(--signal_cyan); }
+QFrame#ioTile[active="true"][signal="orange"] QLabel#ioState { color: var(--signal_orange); }
+QFrame#ioTile[active="true"][signal="blue"]   QLabel#ioState { color: var(--signal_blue); }

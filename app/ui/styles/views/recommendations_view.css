@@ -1,0 +1,72 @@
+/* --- Página Recomendaciones --- */
+
+/* Estilos de app/ui/views/recommendations_view.py */
+/* Una tarjeta (timerCard) por temporizador con su tiempo recomendado */
+
+QFrame#timerCard {
+    background-color: var(--area);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+/* Identificador del bloque (B3, B21...) */
+QLabel#timerBadge {
+    font-family: var(--font_mono);
+    font-size: size(card_title, 11pt);
+    font-weight: 700;
+    color: var(--accent);
+    background-color: var(--accent_soft);
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+QLabel#timerName {
+    font-size: size(card_title, 11pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QLabel#timerOutput {
+    font-size: size(subtitle, 8.5pt);
+    color: var(--muted_text);
+}
+
+/* Recuadro del tiempo recomendado */
+QFrame#timerValueBox {
+    background-color: var(--alternative_area);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+QFrame#timerValueBox[kind="suggested"] {
+    background-color: var(--accent_soft);
+    border: 1px solid var(--accent);
+}
+
+QLabel#timerValueTitle {
+    font-size: size(small, 7.5pt);
+    font-weight: 700;
+    color: var(--muted_text);
+}
+
+QLabel#timerValue {
+    font-family: var(--font_display);
+    font-size: size(value, 20pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QFrame#timerValueBox[kind="suggested"] QLabel#timerValue {
+    color: var(--accent);
+}
+
+QLabel#timerValueDetail {
+    font-size: size(small, 8pt);
+    color: var(--soft_text);
+}
+
+/* Motivo de la recomendación */
+QLabel#timerReason {
+    font-size: size(small, 8.5pt);
+    color: var(--soft_text);
+}

@@ -1,0 +1,42 @@
+/* --- Chip de estado --- */
+
+/* Chip con punto de color: app/ui/components/status_chip.py */
+/* Propiedad state: success | warning | error | neutral | info */
+
+QFrame#statusChip {
+    background-color: var(--neutral_bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+QFrame#statusChip QLabel#chipDot {
+    background-color: var(--neutral);
+    border-radius: 4px;
+}
+
+QFrame#statusChip QLabel#chipLabel {
+    font-size: size(small, 8.5pt);
+    color: var(--soft_text);
+}
+
+QFrame#statusChip QLabel#chipText {
+    font-size: size(small, 9pt);
+    font-weight: 600;
+    color: var(--neutral);
+}
+
+QFrame#statusChip[state="success"] { background-color: var(--success_bg); border-color: var(--success_bg); }
+QFrame#statusChip[state="success"] QLabel#chipDot { background-color: var(--success); }
+QFrame#statusChip[state="success"] QLabel#chipText { color: var(--success); }
+
+QFrame#statusChip[state="warning"] { background-color: var(--warning_bg); border-color: var(--warning_bg); }
+QFrame#statusChip[state="warning"] QLabel#chipDot { background-color: var(--warning); }
+QFrame#statusChip[state="warning"] QLabel#chipText { color: var(--warning); }
+
+QFrame#statusChip[state="error"] { background-color: var(--error_bg); border-color: var(--error_bg); }
+QFrame#statusChip[state="error"] QLabel#chipDot { background-color: var(--error); }
+QFrame#statusChip[state="error"] QLabel#chipText { color: var(--error); }
+
+QFrame#statusChip[state="info"] { background-color: var(--info_bg); border-color: var(--info_bg); }
+QFrame#statusChip[state="info"] QLabel#chipDot { background-color: var(--info); }
+QFrame#statusChip[state="info"] QLabel#chipText { color: var(--info); }

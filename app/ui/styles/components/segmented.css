@@ -1,0 +1,26 @@
+/* --- Control segmentado --- */
+
+/* Selector de periodo (segmented, segment): app/ui/components/segmented.py */
+
+QFrame#segmented {
+    background-color: var(--alternative_area);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+QFrame#segmented QPushButton#segment {
+    background-color: transparent;
+    border: none;
+    border-radius: 7px;
+    color: var(--soft_text);
+    min-height: 28px;
+    padding: 0 14px;
+    font-weight: 600;
+}
+
+QFrame#segmented QPushButton#segment:hover   { color: var(--text); }
+QFrame#segmented QPushButton#segment:checked {
+    background-color: var(--area);
+    color: var(--text);
+    border: 1px solid var(--border_strong);
+}

@@ -1,0 +1,21 @@
+/* --- Página Cámara --- */
+
+/* Estilos de app/ui/views/camera_view.py */
+/* Colores del video: theme.conf -> [Video_surface] y [Video_overlay]. Indicadores: components/stat_card.css */
+
+/* Aviso cuando no hay cámara (noSignalPanel) */
+QWidget#noSignalPanel {
+    background: transparent;
+}
+
+QLabel#noSignalTitle {
+    font-family: var(--font_display);
+    font-size: size(card_title, 14pt);
+    font-weight: 600;
+    color: var(--text);
+}
+
+QLabel#noSignalText {
+    font-size: size(text, 9.5pt);
+    color: var(--soft_text);
+}
