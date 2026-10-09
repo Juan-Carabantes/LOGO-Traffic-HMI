@@ -24,6 +24,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Cambia ?v=dev por el commit para que el navegador descargue el CSS y JS nuevos
+      - name: Versionar CSS y JS
+        run: sed -i "s/?v=dev/?v=${GITHUB_SHA::7}/g" web/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

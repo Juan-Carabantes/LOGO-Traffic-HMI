@@ -153,6 +153,7 @@ img { max-width: 100%; display: block; }
 .creditos img { margin: 0 auto 14px; }
 .creditos h3 span { color: var(--texto-suave); font-weight: 400; }
 .creditos .autor { font-size: 1.3rem; font-weight: 700; margin: 14px 0 2px; }
+.creditos .repo { font-size: .92rem; margin: 10px 0 0; color: var(--texto-suave); overflow-wrap: anywhere; }
 .creditos .institucion { color: var(--texto-suave); font-size: .92rem; margin: 14px 0 0; }
 .equipo { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
 .equipo span { padding: 5px 12px; border-radius: 99px; background: var(--acento-suave); font-size: .9rem; }
@@ -415,8 +416,6 @@ img { max-width: 100%; display: block; }
 .llamado p { font-size: 1.1rem; margin: 0 0 20px; }
 @media (max-width: 980px) { .carrera-datos { grid-template-columns: repeat(2, 1fr); } }
 .subtitulo-equipo { text-align: center; font-size: 1.35rem; margin: 0 0 20px; }
-.creditos .institucion { display: flex; align-items: center; justify-content: center; gap: 8px; }
-.creditos .institucion img { margin: 0; }
 @media (max-width: 760px) {
   .estudios { flex-direction: column; text-align: center; padding: 24px 20px; margin-bottom: 56px; }
   .estudios .chips { justify-content: center; }
