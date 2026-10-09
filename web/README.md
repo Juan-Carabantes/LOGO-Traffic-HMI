@@ -21,7 +21,7 @@ web/
 | `diagrama_electrico.png` | Diagramas → Diagrama eléctrico |
 | `maqueta_1.jpg` … `maqueta_6.jpg` | Fotos de la maqueta |
 | `demostracion.mp4` | Video demostrativo (sección Maqueta) |
-| `equipo.jpg` | Foto del equipo (sección Equipo) |
+| `integrante_1.jpg` … `integrante_4.jpg` | Foto de cada integrante (sección Equipo); cuadrada, se recorta en círculo |
 
 Las capturas `app_semaforo.png`, `app_camara.jpg`, `app_estadisticas.png`, `app_recomendaciones.png` y `app_configuracion.png` ya están incluidas, igual que `programa_logo.png` (diagrama del Tablero Principal) y `logo_itcha.svg` (logo del instituto, en Equipo y Créditos).
 
