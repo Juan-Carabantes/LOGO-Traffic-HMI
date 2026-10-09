@@ -406,6 +406,14 @@ img { max-width: 100%; display: block; }
 .estudios h3 { margin: 4px 0 10px; font-size: 1.35rem; }
 .estudios p { color: var(--texto-suave); margin: 0 0 14px; }
 .estudios .chips { margin-top: 18px; }
+/* --- Estudia la carrera: datos rápidos y llamado a la acción --- */
+.carrera-datos { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
+.carrera-datos div { text-align: center; padding: 18px 12px; border-radius: var(--radio); background: var(--acento-suave); }
+.carrera-datos b { display: block; font-size: 1.3rem; color: var(--acento); }
+.carrera-datos small { color: var(--texto-suave); font-size: .9rem; }
+.llamado { text-align: center; max-width: 640px; margin: 40px auto 0; }
+.llamado p { font-size: 1.1rem; margin: 0 0 20px; }
+@media (max-width: 980px) { .carrera-datos { grid-template-columns: repeat(2, 1fr); } }
 .subtitulo-equipo { text-align: center; font-size: 1.35rem; margin: 0 0 20px; }
 .creditos .institucion { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .creditos .institucion img { margin: 0; }
