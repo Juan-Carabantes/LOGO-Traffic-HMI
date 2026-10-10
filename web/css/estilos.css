@@ -15,11 +15,12 @@
   --radio: 14px;
   --sombra: 0 1px 2px rgba(15, 23, 42, .06), 0 8px 24px rgba(15, 23, 42, .06);
   --fuente: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
 }
 
-/* --- Tema oscuro según el sistema --- */
+/* --- Tema oscuro: según el sistema, salvo que se elija otro con el botón de la barra (data-tema en <html>) --- */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-tema="claro"]) {
     --fondo: #0d1117;
     --fondo-alterno: #121821;
     --tarjeta: #161d27;
@@ -29,7 +30,20 @@
     --acento: #4c8dff;
     --acento-suave: #182842;
     --sombra: 0 1px 2px rgba(0, 0, 0, .4);
+    color-scheme: dark;
   }
+}
+:root[data-tema="oscuro"] {
+  --fondo: #0d1117;
+  --fondo-alterno: #121821;
+  --tarjeta: #161d27;
+  --borde: #263041;
+  --texto: #e6edf3;
+  --texto-suave: #9aa6b6;
+  --acento: #4c8dff;
+  --acento-suave: #182842;
+  --sombra: 0 1px 2px rgba(0, 0, 0, .4);
+  color-scheme: dark;
 }
 
 /* --- Base --- */
@@ -59,12 +73,15 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--borde);
 }
 .nav-contenido { max-width: 1140px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
-.marca { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--texto); text-decoration: none; margin-right: auto; }
+.marca { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-weight: 700; color: var(--texto); text-decoration: none; margin-right: auto; }
 .nav-enlaces { display: flex; gap: 4px; }
-.nav-enlaces a { color: var(--texto-suave); text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 500; font-size: .95rem; }
+.nav-enlaces a { color: var(--texto-suave); text-decoration: none; padding: 8px 10px; border-radius: 8px; font-weight: 500; font-size: .95rem; }
 .nav-enlaces a:hover, .nav-enlaces a.activo { color: var(--acento); background: var(--acento-suave); }
 .nav-boton { display: none; background: none; border: 1px solid var(--borde); border-radius: 8px; padding: 6px; color: var(--texto); cursor: pointer; }
 .nav-boton svg { width: 22px; height: 22px; display: block; }
+.nav-tema { background: none; border: 1px solid var(--borde); border-radius: 8px; padding: 6px; color: var(--texto); cursor: pointer; }
+.nav-tema:hover { color: var(--acento); background: var(--acento-suave); }
+.nav-tema svg { width: 20px; height: 20px; display: block; }
 
 /* --- Portada --- */
 .portada {
@@ -190,13 +207,17 @@ img { max-width: 100%; display: block; }
 }
 
 /* --- Celulares --- */
-@media (max-width: 760px) {
+/* --- Menú desplegable: con 9 enlaces y el botón de tema la barra solo cabe completa en pantallas anchas --- */
+@media (max-width: 1140px) {
   .nav-boton { display: block; }
   .nav-enlaces {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; padding: 10px 16px 16px; background: var(--fondo); border-bottom: 1px solid var(--borde);
   }
   .nav-enlaces.abierto { display: flex; }
+}
+
+@media (max-width: 760px) {
   .contenedor { padding: 0 16px; }
   .portada { padding: 56px 0 64px; }
   .portada-rejilla, .app-rejilla, .diagramas { grid-template-columns: 1fr; gap: 32px; }

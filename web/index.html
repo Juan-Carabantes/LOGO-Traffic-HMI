@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css?v=dev">
+  <!-- Aplica el tema guardado antes de dibujar la página (evita un parpadeo del otro tema) -->
+  <script>try { const t = localStorage.getItem("tema"); if (t) document.documentElement.dataset.tema = t; } catch (e) {}</script>
 </head>
 <body>
 
@@ -31,6 +33,7 @@
       <a href="#estudia">Estudia</a>
       <a href="#creditos">Créditos</a>
     </nav>
+    <button class="nav-tema" id="navTema" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro"><span data-icono="theme_moon"></span></button>
   </div>
 </header>
 

@@ -8,6 +8,28 @@ document.getElementById("navBoton").addEventListener("click", () => navEnlaces.c
 navEnlaces.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => navEnlaces.classList.remove("abierto")));
 
 
+// --- Modo claro / oscuro: el botón de la barra alterna el tema y lo recuerda en este navegador ---
+const sistemaOscuro = window.matchMedia("(prefers-color-scheme: dark)");
+const botonTema = document.getElementById("navTema");
+const temaActual = () => document.documentElement.dataset.tema || (sistemaOscuro.matches ? "oscuro" : "claro");
+function mostrarBotonTema() {
+  const oscuro = temaActual() === "oscuro";
+  const texto = oscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro";
+  botonTema.dataset.icono = oscuro ? "theme_sun" : "theme_moon";
+  botonTema.setAttribute("aria-label", texto);
+  botonTema.title = texto;
+  pintarIconos(botonTema.parentElement);
+}
+botonTema.addEventListener("click", () => {
+  const nuevo = temaActual() === "oscuro" ? "claro" : "oscuro";
+  document.documentElement.dataset.tema = nuevo;
+  try { localStorage.setItem("tema", nuevo); } catch (e) {}
+  mostrarBotonTema();
+});
+sistemaOscuro.addEventListener("change", mostrarBotonTema);
+mostrarBotonTema();
+
+
 // --- Marca en el menú la sección que se esta viendo ---
 const secciones = document.querySelectorAll("section[id]");
 const observador = new IntersectionObserver((entradas) => {

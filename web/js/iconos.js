@@ -29,6 +29,7 @@ const ICONOS = {
   status_trend: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline> <polyline points="17 6 23 6 23 12"></polyline>',
   status_wave: '<polyline points="2 16 2 8 6 8 6 16 10 16 10 8 14 8 14 16 18 16 18 8 22 8"></polyline>',
   theme_moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>',
+  theme_sun: '<circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2"></path> <path d="M12 20v2"></path> <path d="M4.93 4.93l1.41 1.41"></path> <path d="M17.66 17.66l1.41 1.41"></path> <path d="M2 12h2"></path> <path d="M20 12h2"></path> <path d="M6.34 17.66l-1.41 1.41"></path> <path d="M19.07 4.93l-1.41 1.41"></path>',
   device_router: '<rect x="2" y="14" width="20" height="7" rx="2"></rect> <line x1="6" y1="17.5" x2="6.01" y2="17.5"></line> <line x1="10" y1="17.5" x2="10.01" y2="17.5"></line> <path d="M12 14v-3"></path> <path d="M8.5 8a5 5 0 0 1 7 0"></path> <path d="M6 5a8.5 8.5 0 0 1 12 0"></path>',
   device_monitor: '<rect x="2" y="3" width="20" height="14" rx="2"></rect> <line x1="8" y1="21" x2="16" y2="21"></line> <line x1="12" y1="17" x2="12" y2="21"></line>',
   device_button: '<circle cx="12" cy="12" r="9"></circle> <circle cx="12" cy="12" r="4"></circle>',
